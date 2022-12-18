@@ -22,7 +22,7 @@ namespace GothicModComposer
             MaximizeWindow();
 
             Parser.Default.ParseArguments<GmcInitialParameter>(args)
-                .WithParsed(RunGmc);
+                  .WithParsed(RunGmc);
         }
 
         private static void RunGmc(GmcInitialParameter parameters)
@@ -34,13 +34,15 @@ namespace GothicModComposer
                 parameters.AbsolutePathToGothic2Game, parameters.ConfigurationFile);
 
             Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.File(
-                    $"{gmcManager.GmcFolder.LogsFolderPath}/log_{DateTime.Now:yyyyMMdd_HHmm}.txt",
-                    flushToDiskInterval: TimeSpan.FromSeconds(5),
-                    shared: true
-                )
-                .CreateLogger();
+                         .MinimumLevel.Debug()
+                         .WriteTo.File(
+                             $"{gmcManager.GmcFolder.LogsFolderPath}/log_{DateTime.Now:yyyyMMdd_HHmm}.txt",
+                             flushToDiskInterval: TimeSpan.FromSeconds(5),
+                             fileSizeLimitBytes: 10485760,
+                             retainedFileCountLimit: 10,
+                             shared: true
+                         )
+                         .CreateLogger();
 
             try
             {
@@ -86,10 +88,10 @@ namespace GothicModComposer
             var fullVersion = Assembly.GetExecutingAssembly().GetName().Version;
 
             Console.Title = $"GMC v{fullVersion?.Major}.{fullVersion?.Minor}.{fullVersion?.Build}";
-            
-#if DEBUG
+
+        #if DEBUG
             Console.Title = $"{Console.Title} [DEV]";
-#endif
+        #endif
         }
 
         private static void MaximizeWindow()
