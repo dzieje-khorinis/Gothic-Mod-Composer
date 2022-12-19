@@ -10,6 +10,7 @@
     <PackageIcon>GMC-logo.png</PackageIcon>
     <ApplicationIcon>Resources\GMC-logo.ico</ApplicationIcon>
     <LangVersion>latest</LangVersion>
+    <ValidateExecutableReferencesMatchSelfContained>false</ValidateExecutableReferencesMatchSelfContained>
   </PropertyGroup>
 
   <ItemGroup>

@@ -10,6 +10,7 @@
     <ApplicationIcon>Resources\GMC-logo.ico</ApplicationIcon>
     <LangVersion>latest</LangVersion>
     <ErrorOnDuplicatePublishOutputFiles>false</ErrorOnDuplicatePublishOutputFiles>
+    <ValidateExecutableReferencesMatchSelfContained>false</ValidateExecutableReferencesMatchSelfContained>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
