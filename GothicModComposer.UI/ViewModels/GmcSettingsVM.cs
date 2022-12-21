@@ -82,6 +82,7 @@ namespace GothicModComposer.UI.ViewModels
         public RelayCommand ClearLogsDirectory { get; }
         public RelayCommand OpenModBuildDirectory { get; }
         public RelayCommand RestoreDefaultIniOverrides { get; }
+        public RelayCommand RestoreDefaultBuildModConfig { get; }
         public RelayCommand OpenGameDirectory { get; }
         public RelayCommand OpenModDirectory { get; }
         
@@ -113,6 +114,7 @@ namespace GothicModComposer.UI.ViewModels
             OpenModBuildDirectory = new RelayCommand(OpenModBuildDirectoryExecute);
             ClearLogsDirectory = new RelayCommand(ClearLogsDirectoryExecute);
             RestoreDefaultIniOverrides = new RelayCommand(RestoreDefaultIniOverridesExecute);
+            RestoreDefaultBuildModConfig = new RelayCommand(RestoreDefaultBuildModConfigExecute);
             OpenGameDirectory = new RelayCommand(OpenGameDirectoryExecute);
             OpenModDirectory = new RelayCommand(OpenModDirectoryExecute);
 
@@ -122,8 +124,11 @@ namespace GothicModComposer.UI.ViewModels
             LoadConfiguration();
 
             GmcConfiguration.PropertyChanged += (_, _) => SaveSettings.Execute(null);
-            GmcConfiguration.IniOverrides.CollectionChanged += IniOverrides_CollectionChanged;
-            GmcConfiguration.IniOverridesSystemPack.CollectionChanged += IniOverrides_CollectionChanged;
+            GmcConfiguration.IniOverrides.CollectionChanged += OnCollectionChanged;
+            GmcConfiguration.IniOverridesSystemPack.CollectionChanged += OnCollectionChanged;
+            GmcConfiguration.GothicVdfsConfig.Directories.CollectionChanged += OnCollectionChanged;
+            GmcConfiguration.GothicVdfsConfig.Include.CollectionChanged += OnCollectionChanged;
+            GmcConfiguration.GothicVdfsConfig.Exclude.CollectionChanged += OnCollectionChanged;
 
             GmcConfiguration.OnGothic2RootPathChanged += OnGothic2RootPathChanged;
 
@@ -148,23 +153,6 @@ namespace GothicModComposer.UI.ViewModels
                 return;
             
             _backgroundWorldsLoaderWorker.RunWorkerAsync();
-        }
-
-        private void IniOverrides_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            if (e.NewItems != null)
-                foreach (INotifyPropertyChanged added in e.NewItems)
-                {
-                    added.PropertyChanged += (_, _) => SaveSettings.Execute(null);
-                }
-
-            if (e.OldItems != null)
-                foreach (INotifyPropertyChanged removed in e.OldItems)
-                {
-                    removed.PropertyChanged -= (_, _) => SaveSettings.Execute(null);
-                }
-
-            SaveSettings.Execute(null);
         }
 
         private void SelectGothic2RootDirectoryExecute(object obj)
@@ -204,6 +192,23 @@ namespace GothicModComposer.UI.ViewModels
 
             GmcConfiguration.ModificationRootPath = openFolderDialog.SelectedPath;
             OnPropertyChanged(nameof(GmcConfiguration));
+        }
+
+        private void OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            if (e.NewItems != null)
+                foreach (INotifyPropertyChanged added in e.NewItems)
+                {
+                    added.PropertyChanged += (_, _) => SaveSettings.Execute(null);
+                }
+
+            if (e.OldItems != null)
+                foreach (INotifyPropertyChanged removed in e.OldItems)
+                {
+                    removed.PropertyChanged -= (_, _) => SaveSettings.Execute(null);
+                }
+
+            SaveSettings.Execute(null);
         }
 
         private void SaveSettingsExecute(object obj)
@@ -247,6 +252,13 @@ namespace GothicModComposer.UI.ViewModels
             GmcConfiguration.IniOverrides.Clear();
 
             AddMissingDefaultIniOverrides();
+        }
+
+        private void RestoreDefaultBuildModConfigExecute(object obj)
+        {
+            GmcConfiguration.GothicVdfsConfig = null;
+
+            AddMissingDefaultGothicVdfsConfig();
         }
 
         private void CreateDefaultConfigurationFile()
@@ -322,6 +334,12 @@ namespace GothicModComposer.UI.ViewModels
 
             if (defaultIniOverrideAdded)
                 SaveSettings.Execute(null);
+        }
+
+        private void AddMissingDefaultGothicVdfsConfig()
+        {
+            GmcConfiguration.GothicVdfsConfig = GothicVdfsConfigHelper.DefaultGothicVdfsConfig; 
+            SaveSettings.Execute(null);
         }
 
         private void RemoveExistingIniOverridesThatAreNotDefaults()
