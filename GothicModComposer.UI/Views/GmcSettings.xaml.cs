@@ -28,12 +28,13 @@ namespace GothicModComposer.UI.Views
             gmcSettingsVM.IsLogDirectoryAvailable = Directory.Exists(gmcSettingsVM.LogsDirectoryPath) &&
                                                     new DirectoryInfo(gmcSettingsVM.LogsDirectoryPath).GetFiles().Any();
             OverridesIniTable.ItemsSource = collectionView;
+            
             modBuildBtn.IsEnabled =
                 Directory.Exists(Path.Combine(gmcSettingsVM.GmcConfiguration?.Gothic2RootPath ?? string.Empty, ".gmc",
                     "build"));
         }
 
-        private void WindowsStartup_Checked(object sender, System.Windows.RoutedEventArgs e)
+        private void WindowsStartup_Checked(object sender, RoutedEventArgs e)
         {
             var exePath = System.Reflection.Assembly.GetExecutingAssembly().Location.Replace("dll", "exe");
 
@@ -48,7 +49,7 @@ namespace GothicModComposer.UI.Views
             }
         }
 
-        private void WindowsStartup_Unchecked(object sender, System.Windows.RoutedEventArgs e)
+        private void WindowsStartup_Unchecked(object sender, RoutedEventArgs e)
         {
             try
             {
