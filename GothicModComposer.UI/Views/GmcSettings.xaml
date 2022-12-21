@@ -13,6 +13,7 @@
 
     <Window.Resources>
         <converters:BooleanToVisibilityConverter x:Key="VisibilityConverter" True="Collapsed" False="Visible" />
+        <converters:ListToStringConverter x:Key="ListToStringConverter"  />
         <helpers:DynamicDataTemplateSelector x:Key="DynamicDataTemplateSelector" />
     </Window.Resources>
 
@@ -184,7 +185,7 @@
                         <Button Width="200" Height="32"
                                 Margin="0,15,0,0"
                                 HorizontalAlignment="Left"
-                                Content="Restore default settings"
+                                Content="Restore default Ini settings"
                                 Command="{Binding RestoreDefaultIniOverrides}" />
                     </StackPanel>
                 </GroupBox>
@@ -214,7 +215,66 @@
                 <!-- </GroupBox> -->
             </Grid>
         </TabItem>
-        <!-- <TabItem Header="Build mod">
-        </TabItem>-->
+        <TabItem Header="Build mod">
+            <Grid Margin="5,5,5,5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="100" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="400" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Filename:" />
+                    <TextBox Grid.Column="1" Height="25" 
+                                 Text="{Binding GmcConfiguration.GothicVdfsConfig.Filename, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </Grid>
+
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="400" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Directories:" />
+                    <TextBox Grid.Column="1" Height="auto" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="True" IsEnabled="False"
+                                 Text="{Binding GmcConfiguration.GothicVdfsConfig.Directories, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ListToStringConverter}}" />
+                </Grid>
+                
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="400" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Include:" />
+                    <TextBox Grid.Column="1" Height="auto" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="True" IsEnabled="False"
+                             Text="{Binding GmcConfiguration.GothicVdfsConfig.Include, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ListToStringConverter}}" />
+                </Grid>
+
+                <Grid Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="400" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Exclude:" />
+                    <TextBox Grid.Column="1" Height="auto" TextWrapping="Wrap" AcceptsReturn="True" IsReadOnly="True" IsEnabled="False"
+                             Text="{Binding GmcConfiguration.GothicVdfsConfig.Exclude, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource ListToStringConverter}}" />
+                </Grid>
+
+                <Grid Grid.Row="4">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150" />
+                        <ColumnDefinition Width="400" />
+                    </Grid.ColumnDefinitions>
+                    <Label Grid.Column="0" Content="Comment:" />
+                    <TextBox Grid.Column="1" Height="25" 
+                             Text="{Binding GmcConfiguration.GothicVdfsConfig.Comment, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </Grid>
+            </Grid>
+        </TabItem>
     </TabControl>
 </Window>

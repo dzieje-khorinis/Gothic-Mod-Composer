@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text.Json;
-using System.Windows;
 using System.Windows.Forms;
 using GothicModComposer.UI.Helpers;
 using Application = System.Windows.Application;
@@ -16,6 +15,7 @@ namespace GothicModComposer.UI.Models
         private GothicArgumentsConfiguration _gothicArguments;
         private ObservableCollection<IniOverride> _iniOverrides;
         private ObservableCollection<IniOverride> _iniOverridesSystemPack;
+        private GothicVdfsConfig _gothicVdfsConfig;
         private string _modificationRootPath;
         private bool _closeAfterFinish = true;
         private bool _startWithWindows;
@@ -24,10 +24,12 @@ namespace GothicModComposer.UI.Models
         public GmcConfiguration()
         {
             GothicArguments = new GothicArgumentsConfiguration();
+            GothicVdfsConfig = new GothicVdfsConfig();
             IniOverrides = new ObservableCollection<IniOverride>();
             IniOverridesSystemPack = new ObservableCollection<IniOverride>();
 
             GothicArguments.PropertyChanged += (_, _) => OnPropertyChanged(nameof(GothicArguments));
+            GothicVdfsConfig.PropertyChanged += (_, _) => OnPropertyChanged(nameof(GothicVdfsConfig));
         }
 
         public static IEnumerable<Resolution> AvailableResolutions => GetUserSupportedResolutions();
@@ -91,7 +93,11 @@ namespace GothicModComposer.UI.Models
             set => SetProperty(ref _iniOverridesSystemPack, value);
         }
 
-        public GothicVdfsConfig GothicVdfsConfig { get; set; }
+        public GothicVdfsConfig GothicVdfsConfig
+        {
+            get => _gothicVdfsConfig;
+            set => SetProperty(ref _gothicVdfsConfig, value);
+        }
 
         public event Action<string> OnGothic2RootPathChanged = delegate { };
 

@@ -25,6 +25,8 @@ namespace GothicModComposer.UI.ViewModels
             GmcSettings.PropertyChanged += (_, _) => GmcSettings.SaveSettings.Execute(null);
             GmcSettings.GmcConfiguration.GothicArguments.PropertyChanged +=
                 (_, _) => GmcSettings.SaveSettings.Execute(null);
+            GmcSettings.GmcConfiguration.GothicVdfsConfig.PropertyChanged +=
+                (_, _) => GmcSettings.SaveSettings.Execute(null);
 
             RunUpdateProfile = new RelayCommand(RunUpdateProfileExecute);
             RunComposeProfile = new RelayCommand(RunComposeProfileExecute);
