@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
+## [1.18.0] (2022-12-21)
+### Added
+- Build Mod Files configuration (with readonly 'Directories', 'Include', 'Exclude' sections for now)
+
 ## [1.17.0] (2022-12-19)
 ### Changed
 - Upgraded solution to .NET 7
