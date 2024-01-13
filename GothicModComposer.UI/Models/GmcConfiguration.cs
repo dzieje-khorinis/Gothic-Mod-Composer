@@ -149,7 +149,6 @@ namespace GothicModComposer.UI.Models
         ],
         ""Exclude"": 
         [
-            ""_work\\Data\\Worlds\\DK_SUBZENS\\*"",
             ""_work\\Data\\Worlds\\VOBTREE\\*"",
             ""_work\\Data\\Scripts\\Content\\Cutscene\\OU.csl""
         ]

@@ -24,7 +24,6 @@ public static class GothicVdfsConfigHelper
                 Include = new ObservableCollection<string>(),
                 Exclude = new ObservableCollection<string>
                 {
-                    "_work\\Data\\Worlds\\DK_SUBZENS\\*",
                     "_work\\Data\\Worlds\\VOBTREE\\*",
                     "_work\\Data\\Scripts\\Content\\Cutscene\\OU.csl"
                 },
