@@ -104,7 +104,7 @@ namespace GothicModComposer.UI.ViewModels
 
             _zenWorldsFileWatcherService.SetHandlers(ZenWorldFilesChanged);
 
-            GmcSettingsJsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "gmc-2-ui.json");
+            GmcSettingsJsonFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "gmc-ui.json");
             Zen3DWorlds = new ObservableCollection<Zen3DWorld>();
             SelectGothic2RootDirectory = new RelayCommand(SelectGothic2RootDirectoryExecute);
             SelectModificationRootDirectory = new RelayCommand(SelectModificationRootDirectoryExecute);
@@ -281,7 +281,7 @@ namespace GothicModComposer.UI.ViewModels
             catch
             {
                 MessageBox.Show(
-                    $"Your gmc-2-ui.json file under {GmcSettingsJsonFilePath} path has invalid format.{Environment.NewLine}{Environment.NewLine}Please delete this file and run GMC UI again.",
+                    $"Your gmc-ui.json file under {GmcSettingsJsonFilePath} path has invalid format.{Environment.NewLine}{Environment.NewLine}Please delete this file and run GMC UI again.",
                     "Invalid configuration file format",
                     MessageBoxButton.OK, MessageBoxImage.Error);
 

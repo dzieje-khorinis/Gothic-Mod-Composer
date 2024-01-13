@@ -30,7 +30,7 @@ namespace GothicModComposer.UI.Services
             if (IsGmcAlreadyRun())
             {
                 MessageBox.Show(
-                    "GMC is already running. Close the existing GMC-2.exe process if you want to execute a new one.",
+                    "GMC is already running. Close the existing GMC.exe process if you want to execute a new one.",
                     "GMC is running", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
@@ -39,7 +39,7 @@ namespace GothicModComposer.UI.Services
             {
                 StartInfo = new ProcessStartInfo
                 {
-                    FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GMC-2.exe"),
+                    FileName = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "GMC.exe"),
                     ArgumentList =
                     {
                         $"--gothic2Path={_gmcSettingsVM.GmcConfiguration.Gothic2RootPath}",
@@ -73,6 +73,6 @@ namespace GothicModComposer.UI.Services
             }
         }
 
-        private static bool IsGmcAlreadyRun() => Process.GetProcessesByName("GMC-2").Length > 0;
+        private static bool IsGmcAlreadyRun() => Process.GetProcessesByName("GMC").Length > 0;
     }
 }

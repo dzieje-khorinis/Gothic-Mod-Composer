@@ -8,7 +8,7 @@ public static class GothicVdfsConfigHelper
     public static GothicVdfsConfig DefaultGothicVdfsConfig
             => new()
             {
-                Filename = "DK.mod",
+                Filename = "GothicMod.mod",
                 Directories = new ObservableCollection<string>
                 {
                     
@@ -28,6 +28,6 @@ public static class GothicVdfsConfigHelper
                     "_work\\Data\\Worlds\\VOBTREE\\*",
                     "_work\\Data\\Scripts\\Content\\Cutscene\\OU.csl"
                 },
-                Comment = "Gothic II - The History of Khorinis (%%D)%%N(C) 2021 SoulFire"
+                Comment = ""
             };
 }

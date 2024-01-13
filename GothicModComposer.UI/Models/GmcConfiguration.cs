@@ -131,8 +131,8 @@ namespace GothicModComposer.UI.Models
     ],
     ""GothicVdfsConfig"": 
     {
-        ""Filename"": ""DK.mod"",
-        ""Comment"": ""Gothic II - The History of Khorinis (%%D)%%N(C) 2021 SoulFire"",
+        ""Filename"": ""GothicMod.mod"",
+        ""Comment"": """",
         ""Directories"": 
         [
             ""_work\\Data\\Anims\\_compiled"",

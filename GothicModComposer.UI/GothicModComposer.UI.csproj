@@ -4,8 +4,8 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net7.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <AssemblyName>GMC-2 UI</AssemblyName>
-    <Version>1.18.0</Version>
+    <AssemblyName>GMC UI</AssemblyName>
+    <Version>1.0.0</Version>
     <PackageIcon>GMC-logo.ico</PackageIcon>
     <ApplicationIcon>Resources\GMC-logo.ico</ApplicationIcon>
     <LangVersion>latest</LangVersion>
