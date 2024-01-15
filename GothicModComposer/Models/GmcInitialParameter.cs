@@ -9,7 +9,7 @@ namespace GothicModComposer.Models
             'm',
             "modPath",
             Required = true,
-            HelpText = "Absolute path to the History of Khorinis modification directory project.")]
+            HelpText = "Absolute path to the Gothic modification directory project.")]
         public string AbsolutePathToProject { get; set; }
 
         [Option(

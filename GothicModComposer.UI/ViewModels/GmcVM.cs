@@ -154,7 +154,7 @@ namespace GothicModComposer.UI.ViewModels
         {
             var processStartInfo = new ProcessStartInfo
             {
-                FileName = "https://gitlab.com/dzieje-khorinis/gmc/-/blob/master/CHANGELOG.md",
+                FileName = "",
                 UseShellExecute = true
             };
 

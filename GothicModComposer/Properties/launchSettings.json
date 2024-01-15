@@ -2,9 +2,6 @@
   "profiles": {
     "GothicModComposer": {
       "commandName": "Project",
-
-      // New way of executing GMC - configuration file.
-      "commandLineArgs": "--modPath=\"C:\\localRepositories\\TheHistoryOfKhorinis\" --gothic2Path=\"C:\\Program Files (x86)\\GOG Galaxy\\Games\\Gothic 2 Gold - GMC with DK\" --configurationFile=\"C:\\localRepositories\\GMC-2\\GothicModComposer.UI\\bin\\Debug\\net6.0-windows\\gmc-2-ui.json\" --profile=Update"
     }
   }
 }
