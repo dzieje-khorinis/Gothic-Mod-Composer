@@ -35,8 +35,7 @@ namespace GothicModComposer.UI.ViewModels
             RunBuildModFileProfile = new RelayCommand(RunBuildModFileProfileProfileExecute);
             RunEnableVDFProfile = new RelayCommand(RunEnableVDFProfileProfileExecute);
             OpenSettings = new RelayCommand(OpenSettingsExecute);
-            OpenChangeLog = new RelayCommand(OpenChangeLogExecute);
-            OpenTrelloProjectBoard = new RelayCommand(OpenTrelloProjectBoardExecute);
+            OpenGitHubRepo = new RelayCommand(OpenGitHubRepoExecute);
             RunSpacer = new RelayCommand(RunSpacerExecute);
             DeleteZenWorld = new RelayCommand(DeleteZenWorldExecute);
             RenameZenWorld = new RelayCommand(RenameZenWorldExecute);
@@ -51,8 +50,7 @@ namespace GothicModComposer.UI.ViewModels
         public RelayCommand RunBuildModFileProfile { get; }
         public RelayCommand RunEnableVDFProfile { get; }
         public RelayCommand OpenSettings { get; }
-        public RelayCommand OpenChangeLog { get; }
-        public RelayCommand OpenTrelloProjectBoard { get; }
+        public RelayCommand OpenGitHubRepo { get; }
         public RelayCommand RunSpacer { get; }
         public RelayCommand DeleteZenWorld { get; }
         public RelayCommand RenameZenWorld { get; }
@@ -161,11 +159,11 @@ namespace GothicModComposer.UI.ViewModels
             Process.Start(processStartInfo);
         }
 
-        private static void OpenTrelloProjectBoardExecute(object obj)
+        private static void OpenGitHubRepoExecute(object obj)
         {
             var processStartInfo = new ProcessStartInfo
             {
-                FileName = "https://trello.com/b/ndyTLtzA/gmc-2",
+                FileName = "https://github.com/dzieje-khorinis/Gothic-Mod-Composer",
                 UseShellExecute = true
             };
 

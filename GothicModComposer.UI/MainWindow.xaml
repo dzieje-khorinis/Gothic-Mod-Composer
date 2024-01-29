@@ -73,10 +73,7 @@
             <Menu Foreground="Black">
                 <!-- <MenuItem Header="File" IsEnabled="False" /> -->
                 <MenuItem Header="Settings" Command="{Binding OpenSettings}" />
-                <MenuItem Header="Help">
-                    <MenuItem Header="ChangeLog" Command="{Binding OpenChangeLog}" />
-                    <MenuItem Header="Trello project board" Command="{Binding OpenTrelloProjectBoard}" />
-                </MenuItem>
+                <MenuItem Header="Help" Command="{Binding OpenGitHubRepo}" />
             </Menu>
         </StackPanel>
 
