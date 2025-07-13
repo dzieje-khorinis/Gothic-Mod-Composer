@@ -31,3 +31,15 @@ GMC has several profile modes that can be run with. Below you can find the descr
 
 ### EnableVDF
 > Enabled VDF files from the assets directory.
+
+
+## Credits
+XardasLord - main creator of the program
+
+wertone
+
+zuku05
+
+Fabiosek - Tests
+
+**Special thanks to Lorthiz for the first version of this program created for the "Gothic II: The History of Khorinis" project.**
