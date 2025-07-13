@@ -42,4 +42,4 @@ zuku05
 
 Fabiosek - Tests
 
-**Special thanks to Lorthiz for the first version of this program created for the "Gothic II: The History of Khorinis" project.**
+**Special thanks to [Lorthiz](https://github.com/lorthiz) for the first version of this program created for the "Gothic II: The History of Khorinis" project.**
